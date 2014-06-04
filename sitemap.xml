@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://jusjmkim.github.io/blog/2014/06/03/my-first-post-on-octopress/</loc>
+        <lastmod>2014-06-03T23:20:12-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jusjmkim.github.io/blog/archives/</loc>
+        <lastmod>2014-06-03T23:20:12-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jusjmkim.github.io/</loc>
+        <lastmod>2014-06-03T23:20:12-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jusjmkim.github.io/robots.txt</loc>
+        <lastmod>2014-06-03T23:13:09-04:00</lastmod>
+    </url>
+</urlset>
