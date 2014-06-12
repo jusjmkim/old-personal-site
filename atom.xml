@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-06-04T08:51:38-04:00</updated>
+  <updated>2014-06-12T09:51:33-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
+    <title type="html"><![CDATA[My First Post On Octopress]]></title>
     <link href="http://jusjmkim.github.io/blog/2014/06/03/my-first-post-on-octopress/"/>
     <updated>2014-06-03T23:17:46-04:00</updated>
     <id>http://jusjmkim.github.io/blog/2014/06/03/my-first-post-on-octopress</id>
