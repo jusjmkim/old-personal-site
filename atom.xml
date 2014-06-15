@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-06-12T16:07:17-04:00</updated>
+  <updated>2014-06-15T13:03:12-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Scraping Twitter Timestamps With Nokogiri]]></title>
+    <link href="http://jusjmkim.github.io/blog/2014/06/14/scraping-twitter-timestamps-with-nokogiri/"/>
+    <updated>2014-06-14T23:40:00-04:00</updated>
+    <id>http://jusjmkim.github.io/blog/2014/06/14/scraping-twitter-timestamps-with-nokogiri</id>
+    <content type="html"><![CDATA[<p>As test driven development becomes increasingly popular, the desire to test every facet of a piece of a code arises. My group found ourselves in this situation while trying to scrape from Twitter with a Ruby Gem called Nokogiri. However, when we ran our rspec test suite on our code (testing it with one of our twitters), we got this failure:</p>
+
+<p><img class="center" src="http://jusjmkim.github.io/images/scraping_twitter/tweet_string_rspec_failure_small.png" width="1500" height="2000"></p>
+
+<p>These strings look exactly the same to us (the ends of the strings are also identical. I just took a screenshot of part of it too keep it all readable), and we should have been smart and basically considered this test a success. But, this project was more of an educational effort than anything else, and test-driven development dictates that we pass all our tests. Thus, we decided to look into this issue and find another way to test our code. After looking at the tweet&rsquo;s source code, we found this:</p>
+
+<p><img class="center" src="http://jusjmkim.github.io/images/scraping_twitter/tweet_source_code.png"></p>
+
+<p>It seems that while the strings seem to be displaying the same, the actual output is still a Nokogiri XML output. If that was true, we couldn&rsquo;t go about validating the tweet directly. I wasn&rsquo;t sure what to do to test my code until I saw this:</p>
+
+<p><img class="center" src="http://jusjmkim.github.io/images/scraping_twitter/tweet_timestamp_source_code.png"></p>
+
+<p>Perhaps, we can confirm my code with each tweet&rsquo;s timestamp since every tweet, in theory, has a unique timestamp. After much Nokogiri work, we reached the result below, and it outputted a list of timestamps. (@student_twitters is simply an array of each student&rsquo;s twitter handle urls.)</p>
+
+<p><img class="center" src="http://jusjmkim.github.io/images/scraping_twitter/timestamp_method.png"></p>
+
+<p>It is important to note that while Nokogiri outputs all of these in square brackets, the output does not behave like an array at all. To be perfectly honest, I am not particularly well-versed in Nokogiri enough to explain why or definitively what is happening under the hood, but most array methods don&rsquo;t seem to work on the entire output. Rather, most methods used on the output only seem to target the first element. As shown in the rspec test suite below, we simply called the second element of the list via its index and asked if it included a timestamp I knew was there.</p>
+
+<p><img class="center" src="http://jusjmkim.github.io/images/scraping_twitter/timestamp_rspec.png"></p>
+
+<p>The code now passed its test suite! Furthermore, if one ever wanted to confirm the equality of twitter instances, on can do so as shown below.</p>
+
+<p><img class="center" src="http://jusjmkim.github.io/images/scraping_twitter/timestamp_equality.png"></p>
+
+<p>Nokogiri is fairly troublesome to use on large html documents, and knowing which css selectors to target and how to test for it may prove to be useful. I hope this post has proven to do just that for at least some of those who have bothered to read this far.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My First Post On Octopress]]></title>
