@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-06-16T10:14:49-04:00</updated>
+  <updated>2014-06-30T09:17:39-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Comparing Javascript Objects with Ruby Hashes]]></title>
+    <link href="http://jusjmkim.github.io/blog/2014/06/30/comparing-javascript-objects-with-ruby-hashes/"/>
+    <updated>2014-06-30T08:37:44-04:00</updated>
+    <id>http://jusjmkim.github.io/blog/2014/06/30/comparing-javascript-objects-with-ruby-hashes</id>
+    <content type="html"><![CDATA[<p>Having just finished the Javascript track on Codecademy, I felt compelled to comment on at least one aspect of what I learned in the course. Since the two previous languages I learned were Java and Ruby, I found Javascript particularly interesting because it seemed to be a weird mix of the two languages. In this post, I will be looking at the similarities and differences between objects in Javascript and hashes in Ruby. I apologize in advance for any mistakes in this post as while I googled as much as I could to make the information on this accurate, I am still a novice in Javascript.</p>
+
+<p>A comparison of Javascript objects and Ruby hashes came to mind because their syntaxes are extremely similar. One can define a Javascript object through literal notation, as shown below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">key1</span><span class="o">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">key2</span><span class="o">:</span> <span class="s2">&quot;value2&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At the same time, one can define a Ruby hash through literal notation as well.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">key1</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">key2</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Literally, the only difference in syntax would be the var in front of obj in the Javascript version. In terms of functionality, the two data structures are incredibly similar as they both store data with key-value pairs. In fact, the syntax to call value1 in both structures is incredibly similar.</p>
+
+<p>In Javascript, it would be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">obj</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and in Ruby, it would be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span><span class="o">[</span><span class="ss">:key1</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This difference in syntax hints at one of the subtle differences between these two data structures. In Javascript, the colons are a necessity and simply link corresponding keys and values. In Ruby, however, this syntax implies that the key is a certain data type called a symbol, and in more explicit syntax, the hash can also be declared with hash rockets as such:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">:key1</span> <span class="o">=&gt;</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:key2</span> <span class="o">=&gt;</span> <span class="s2">&quot;value2&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For both languages, the key can be data types other than strings or symbols. It is interesting to note that both languages are object oriented languages, and most things are objects in both languages. Thus, it comes as no surprise that hashes in Ruby are also objects. There is a distinction, though, between the construction behind Javascript objects and Ruby hashes since, as the name would imply, Javascript objects represent the general construction behind all objects in Javascript while hashes are just one type of object in Ruby.</p>
+
+<p>The fact that they are both objects is apparent as they can both be declared through constructors. This shows that they are both instances of their respective classes. In Javascript, it would be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>while in Ruby, it would be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, a more noticeable difference can be seen through Javascript&rsquo;s object&rsquo;s ability to call its values through dot notation as well.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">key1</span><span class="o">:</span> <span class="nx">value</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">key1</span> <span class="o">===</span> <span class="nx">value</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is exactly the syntax to call an instant variable through a reader method in Ruby (and many other object oriented languages). I&rsquo;m not entirely sure what the significance behind this difference is, so upon future research (and my remembering to update this post), I will update this information accordingly.</p>
+
+<p>Additional Resources</p>
+
+<p><a href="http://blog.flatironschool.com/post/67666573907/javascript-vs-ruby">http://blog.flatironschool.com/post/67666573907/javascript-vs-ruby</a></p>
+
+<p><a href="http://stantona.github.io/blog/2012/12/12/a-tale-of-two-object-models-javascript-and-ruby/">http://stantona.github.io/blog/2012/12/12/a-tale-of-two-object-models-javascript-and-ruby/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Scraping Twitter Timestamps With Nokogiri]]></title>
