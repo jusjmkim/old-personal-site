@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-06-30T09:17:39-04:00</updated>
+  <updated>2014-06-30T09:52:56-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -91,7 +91,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>However, a more noticeable difference can be seen through Javascript&rsquo;s object&rsquo;s ability to call its values through dot notation as well.</p>
+<p>It is interesting to note that values stored in Javascript can be called through the dot notation, as shown below.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -106,7 +106,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is exactly the syntax to call an instant variable through a reader method in Ruby (and many other object oriented languages). I&rsquo;m not entirely sure what the significance behind this difference is, so upon future research (and my remembering to update this post), I will update this information accordingly.</p>
+<p>This is exactly the syntax to call an instant variable through a reader method in Ruby (and many other object oriented languages). However, these are not instance variables, so you are not using reader methods. Ultimately, these are two very different data types, but they both store data and have syntaxes so similar that I thought it would be worth mentioning. I&rsquo;m also not entirely sure if the difference between the two is significant, so upon future research (and my remembering to update this post), I will update this information accordingly.</p>
 
 <p>Additional Resources</p>
 
