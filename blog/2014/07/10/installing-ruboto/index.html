@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ruboto vs Pindah vs Rhodes vs SL4A - As I Learn Web Dev</title>
+  <title>Installing Ruboto - As I Learn Web Dev</title>
   <meta name="author" content="Justin Kim">
 
   
-  <meta name="description" content="I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less &hellip;">
+  <meta name="description" content="Setup: First of all, you should gem install ruboto to get started. Then, you should install your JDK or Java Development Kit. The link to JDK 8, the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://jusjmkim.github.io/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a">
+  <link rel="canonical" href="http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto">
   <link href="/favicon.ico" rel="icon">
   
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -65,7 +65,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ruboto vs Pindah vs Rhodes vs SL4A</h1>
+      <h1 class="entry-title">Installing Ruboto</h1>
     
     
       <p class="meta">
@@ -81,74 +81,35 @@
   
 
 
-<time datetime="2014-07-09T23:30:15-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
+<time datetime="2014-07-10T09:17:06-04:00" pubdate data-updated="true">Jul 10<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less credibility due to my lack of experience, it also gave me the foresight to make this blog post at all since I was looking for such a resource when deciding which platform to use for android development. From my googling, I found that there are four major android development platforms one can use when coding in Ruby: Ruboto, Pindah, Rhodes, and SL4A. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah. These two technologies seem to be the most promising, so they naturally piqued my interest the most.</p>
-
-<h1>Ruboto</h1>
+<div class="entry-content"><h2>Setup:</h2>
 
 
-<p>Ruboto is a</p>
+<p>First of all, you should gem install ruboto to get started. Then, you should install your JDK or Java Development Kit. The link to JDK 8, the latest at the time of this writing is available here: <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.</a></p>
 
-<h2>Pros:</h2>
+<p>To install ant (assuming you have homebrew installed), do the following:</p>
 
-
-
-
-<h2>Cons:</h2>
-
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install ant
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Then, run the following command to run the rest of the setup.</p>
 
-<h1>Pindah</h1>
-
-
-<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>)</p>
-
-<h2>Pros:</h2>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruboto setup
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
 
-
-<h2>Cons:</h2>
-
-
-
-
-<h1>Rhodes</h1>
-
-
-
-
-<h2>Pros:</h2>
-
-
-
-
-<h2>Cons:</h2>
-
-
-
-
-<h1>SL4A</h1>
-
-
-
-
-<h2>Pros:</h2>
-
-
-
-
-<h2>Cons:</h2>
-
-
-
+<p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
 </div>
 
 
@@ -171,7 +132,7 @@
   
 
 
-<time datetime="2014-07-09T23:30:15-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
+<time datetime="2014-07-10T09:17:06-04:00" pubdate data-updated="true">Jul 10<span>th</span>, 2014</time>
       
 
 
@@ -179,7 +140,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jusjmkim.github.io/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/" data-via="" data-counturl="http://jusjmkim.github.io/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/" data-via="" data-counturl="http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/" >Tweet</a>
   
   
   
@@ -188,10 +149,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/06/30/comparing-javascript-objects-with-ruby-hashes/" title="Previous Post: Comparing Javascript Objects with Ruby Hashes">&laquo; Comparing Javascript Objects with Ruby Hashes</a>
+        <a class="basic-alignment left" href="/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/" title="Previous Post: Ruboto vs Pindah vs Rhodes vs SL4A">&laquo; Ruboto vs Pindah vs Rhodes vs SL4A</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/07/10/installing-ruboto/" title="next Post: Installing Ruboto">Installing Ruboto &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/07/10/installing-pindah/" title="next Post: Installing Pindah">Installing Pindah &raquo;</a>
       
     </p>
   </footer>
@@ -221,8 +182,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://jusjmkim.github.io/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/';
-        var disqus_url = 'http://jusjmkim.github.io/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/';
+        var disqus_identifier = 'http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/';
+        var disqus_url = 'http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/';
         var disqus_script = 'embed.js';
       
     (function () {

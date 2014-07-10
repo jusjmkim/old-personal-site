@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Kim">
 
   
-  <meta name="description" content="I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less &hellip;">
+  <meta name="description" content="Setup: To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,7 +68,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/">Ruboto vs Pindah vs Rhodes vs SL4A</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/07/10/installing-pindah/">Installing Pindah</a></h1>
     
     
       <p class="meta">
@@ -84,59 +84,14 @@
   
 
 
-<time datetime="2014-07-09T23:30:15-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
+<time datetime="2014-07-10T09:17:11-04:00" pubdate data-updated="true">Jul 10<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less credibility due to my lack of experience, it also gave me the foresight to make this blog post at all since I was looking for such a resource when deciding which platform to use for android development. From my googling, I found that there are four major android development platforms one can use when coding in Ruby: Ruboto, Pindah, Rhodes, and SL4A. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah. These two technologies seem to be the most promising, so they naturally piqued my interest the most.</p>
-
-<h1>Ruboto</h1>
-
-
-<p>Ruboto is a</p>
-
-<h2>Setup:</h2>
-
-
-<p>First of all, you should gem install ruboto to get started. Then, you should install your JDK or Java Development Kit. The link to JDK 8, the latest at the time of this writing is available here: <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.</a></p>
-
-<p>To install ant (assuming you have homebrew installed), do the following:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install ant
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then, run the following command to run the rest of the setup.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruboto setup
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
-
-<p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
-
-<h2>Pros:</h2>
-
-
-
-
-<h2>Cons:</h2>
-
-
-
-
-<h1>Pindah</h1>
-
-
-<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>)</p>
-
-<h2>Setup:</h2>
+  <div class="entry-content"><h2>Setup:</h2>
 
 
 <p>To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should be installed through (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html">http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html</a>). If you are using RVM, JRuby should be installed through (rvm install jruby-1.7.10). Then, to install Mirah, you have to use JRuby through(rvm use jruby-1.7.10) and then gem install mirah-0.1.2. Then, Rake can simply be gem installed via gem install rake.</p>
@@ -194,6 +149,119 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>Hello, Mirah!
 </span></code></pre></td></tr></table></div></figure>
 
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/10/installing-ruboto/">Installing Ruboto</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-10T09:17:06-04:00" pubdate data-updated="true">Jul 10<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Setup:</h2>
+
+
+<p>First of all, you should gem install ruboto to get started. Then, you should install your JDK or Java Development Kit. The link to JDK 8, the latest at the time of this writing is available here: <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.</a></p>
+
+<p>To install ant (assuming you have homebrew installed), do the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install ant
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, run the following command to run the rest of the setup.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruboto setup
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
+
+<p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/">Ruboto vs Pindah vs Rhodes vs SL4A</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-09T23:30:15-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less credibility due to my lack of experience, it also gave me the foresight to make this blog post at all since I was looking for such a resource when deciding which platform to use for android development. From my googling, I found that there are four major android development platforms one can use when coding in Ruby: Ruboto, Pindah, Rhodes, and SL4A. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah. These two technologies seem to be the most promising, so they naturally piqued my interest the most.</p>
+
+<h1>Ruboto</h1>
+
+
+<p>Ruboto is a</p>
+
+<h2>Pros:</h2>
+
+
+
+
+<h2>Cons:</h2>
+
+
+
+
+<h1>Pindah</h1>
+
+
+<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>)</p>
 
 <h2>Pros:</h2>
 
