@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Kim">
 
   
-  <meta name="description" content="Having just finished the Javascript track on Codecademy, I felt compelled to comment on at least one aspect of what I learned in the course. Since &hellip;">
+  <meta name="description" content="I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -62,6 +62,184 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/">Ruboto vs Pindah vs Rhodes vs SL4A</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-09T23:30:15-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less credibility due to my lack of experience, it also gave me the foresight to make this blog post at all since I was looking for such a resource when deciding which platform to use for android development. From my googling, I found that there are four major android development platforms one can use when coding in Ruby: Ruboto, Pindah, Rhodes, and SL4A. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah. These two technologies seem to be the most promising, so they naturally piqued my interest the most.</p>
+
+<h1>Ruboto</h1>
+
+
+<p>Ruboto is a</p>
+
+<h2>Setup:</h2>
+
+
+<p>First of all, you should gem install ruboto to get started. Then, you should install your JDK or Java Development Kit. The link to JDK 8, the latest at the time of this writing is available here: <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.</a></p>
+
+<p>To install ant (assuming you have homebrew installed), do the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install ant
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, run the following command to run the rest of the setup.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruboto setup
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
+
+<p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
+
+<h2>Pros:</h2>
+
+
+
+
+<h2>Cons:</h2>
+
+
+
+
+<h1>Pindah</h1>
+
+
+<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>)</p>
+
+<h2>Setup:</h2>
+
+
+<p>To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should be installed through (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html">http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html</a>). If you are using RVM, JRuby should be installed through (rvm install jruby-1.7.10). Then, to install Mirah, you have to use JRuby through(rvm use jruby-1.7.10) and then gem install mirah-0.1.2. Then, Rake can simply be gem installed via gem install rake.</p>
+
+<p>As it turns out, if you visit the pindah github page (<a href="https://github.com/mirah/pindah/">https://github.com/mirah/pindah/</a>), at the time of this writing at least, the table under JRuby/Mirah Compatibility only goes up to JRuby 1.7.10 and Mirah 0.1.2. This proved to be annoying to figure out because when I gem installed jruby, I got version 1.7.13, which I later found out was incompatible with Mirah 0.1.2. With RVM (which is what I use), you can easily switch jruby versions as shown below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm use jruby-1.7.10
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You must also use JDK 6 or 7, and at the time of this writing, JDK 8 is out. Thus, you have to downgrade JDK to the appropriate version to make this work, and OS X doesn&rsquo;t seem to provide an easy way to do this. Thus, adding the following lines of code to your bash_profile via (cd ~/.bash_profile) should set the default JDK version number to 7. (Remember to actually download JDK 7 from the Java website.)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>setjdk<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-ne 0 <span class="o">]</span>; <span class="k">then  </span>
+</span><span class='line'><span class="k">   </span>removeFromPath <span class="s1">&#39;/System/Library/Frameworks/JavaVM.framework/Home/bin&#39;</span>
+</span><span class='line'>   <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;${JAVA_HOME+x}&quot;</span> <span class="o">]</span>; <span class="k">then  </span>
+</span><span class='line'><span class="k">    </span>removeFromPath <span class="nv">$JAVA_HOME</span>/bin
+</span><span class='line'>   <span class="k">fi  </span>
+</span><span class='line'><span class="k">   </span><span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="sb">`</span>/usr/libexec/java_home -v <span class="nv">$@</span><span class="sb">`</span>
+</span><span class='line'>   <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'> <span class="k">function </span>removeFromPath<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$PATH</span> | sed -E -e <span class="s2">&quot;s;:$1;;&quot;</span> -e <span class="s2">&quot;s;$1:?;;&quot;</span><span class="k">)</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'>setjdk 1.7
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To test if it works, in your bash, you should run the following line,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mirah -e <span class="s1">&#39;puts &quot;Hello, Mirah!&quot;&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and have the output,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Hello, Mirah!
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Pros:</h2>
+
+
+
+
+<h2>Cons:</h2>
+
+
+
+
+<h1>Rhodes</h1>
+
+
+
+
+<h2>Pros:</h2>
+
+
+
+
+<h2>Cons:</h2>
+
+
+
+
+<h1>SL4A</h1>
+
+
+
+
+<h2>Pros:</h2>
+
+
+
+
+<h2>Cons:</h2>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -381,6 +559,19 @@
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'jusjmkimgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
