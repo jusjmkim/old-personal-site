@@ -95,12 +95,7 @@
 
 <p>To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should be installed through <code>http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html</code>. If you are using RVM, JRuby should be installed through (rvm install jruby-1.7.10). Then, to install Mirah, you have to use JRuby through <code>rvm use jruby-1.7.10</code> and then <code>gem install mirah-0.1.2</code>. Then, Rake can simply be gem installed via <code>gem install rake</code>.</p>
 
-<p>As it turns out, if you visit the pindah github page <code>https://github.com/mirah/pindah/</code>, at the time of this writing at least, the table under JRuby/Mirah Compatibility only goes up to <code>JRuby 1.7.10</code> and <code>Mirah 0.1.2</code>. This proved to be annoying to figure out because when I gem installed jruby, I got version 1.7.13, which I later found out was incompatible with Mirah 0.1.2. With RVM (which is what I use), you can easily switch jruby versions as shown below.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm use jruby-1.7.10
-</span></code></pre></td></tr></table></div></figure>
-
+<p>As it turns out, if you visit the pindah github page <code>https://github.com/mirah/pindah/</code>, at the time of this writing at least, the table under JRuby/Mirah Compatibility only goes up to <code>JRuby 1.7.10</code> and <code>Mirah 0.1.2</code>. This proved to be annoying to figure out because when I gem installed jruby, I got version 1.7.13, which I later found out was incompatible with Mirah 0.1.2. With RVM (which is what I use), you can easily switch jruby versions by doing <code>rvm use jruby-1.7.10</code>.</p>
 
 <p>You must also use JDK 6 or 7, and at the time of this writing, JDK 8 is out. Thus, you have to downgrade JDK to the appropriate version to make this work, and OS X doesn&rsquo;t seem to provide an easy way to do this. Thus, adding the following lines of code to your bash_profile via <code>cd ~/.bash_profile</code> should set the default JDK version number to 7. (Remember to actually download JDK 7 from the Java website.)</p>
 
