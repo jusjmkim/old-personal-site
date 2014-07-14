@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-07-14T00:10:18-04:00</updated>
+  <updated>2014-07-14T00:15:26-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -23,16 +23,16 @@
 <h2>Setup:</h2>
 
 
-<p>To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should be installed through (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html">http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html</a>). If you are using RVM, JRuby should be installed through (rvm install jruby-1.7.10). Then, to install Mirah, you have to use JRuby through(rvm use jruby-1.7.10) and then gem install mirah-0.1.2. Then, Rake can simply be gem installed via <code>gem install rake</code>.</p>
+<p>To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should be installed through <code>http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html</code>. If you are using RVM, JRuby should be installed through (rvm install jruby-1.7.10). Then, to install Mirah, you have to use JRuby through <code>rvm use jruby-1.7.10</code> and then <code>gem install mirah-0.1.2</code>. Then, Rake can simply be gem installed via <code>gem install rake</code>.</p>
 
-<p>As it turns out, if you visit the pindah github page (<a href="https://github.com/mirah/pindah/">https://github.com/mirah/pindah/</a>), at the time of this writing at least, the table under JRuby/Mirah Compatibility only goes up to JRuby 1.7.10 and Mirah 0.1.2. This proved to be annoying to figure out because when I gem installed jruby, I got version 1.7.13, which I later found out was incompatible with Mirah 0.1.2. With RVM (which is what I use), you can easily switch jruby versions as shown below.</p>
+<p>As it turns out, if you visit the pindah github page <code>https://github.com/mirah/pindah/</code>, at the time of this writing at least, the table under JRuby/Mirah Compatibility only goes up to <code>JRuby 1.7.10</code> and <code>Mirah 0.1.2</code>. This proved to be annoying to figure out because when I gem installed jruby, I got version 1.7.13, which I later found out was incompatible with Mirah 0.1.2. With RVM (which is what I use), you can easily switch jruby versions as shown below.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm use jruby-1.7.10
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>You must also use JDK 6 or 7, and at the time of this writing, JDK 8 is out. Thus, you have to downgrade JDK to the appropriate version to make this work, and OS X doesn&rsquo;t seem to provide an easy way to do this. Thus, adding the following lines of code to your bash_profile via (cd ~/.bash_profile) should set the default JDK version number to 7. (Remember to actually download JDK 7 from the Java website.)</p>
+<p>You must also use JDK 6 or 7, and at the time of this writing, JDK 8 is out. Thus, you have to downgrade JDK to the appropriate version to make this work, and OS X doesn&rsquo;t seem to provide an easy way to do this. Thus, adding the following lines of code to your bash_profile via <code>cd ~/.bash_profile</code> should set the default JDK version number to 7. (Remember to actually download JDK 7 from the Java website.)</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -65,19 +65,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>To test if it works, in your bash, you should run the following line,</p>
+<p>To test if it works, in your bash, you should run the following line,
+<code>mirah -e 'puts "Hello, Mirah!"'</code></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>mirah -e <span class="s1">&#39;puts &quot;Hello, Mirah!&quot;&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and have the output,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Hello, Mirah!
-</span></code></pre></td></tr></table></div></figure>
-
+<p>and have the output,
+<code>Hello, Mirah!</code></p>
 ]]></content>
   </entry>
   
@@ -93,21 +85,12 @@
 
 <p>First of all, you should gem install ruboto to get started. Then, you should install your JDK or Java Development Kit. The link to JDK 8, the latest at the time of this writing is available here: <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.</a></p>
 
-<p>To install ant (assuming you have homebrew installed), do the following:</p>
+<p>To install ant (assuming you have homebrew installed), do the following:
+<code>brew install ant</code></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install ant
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then, run the following command to run the rest of the setup.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruboto setup
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
+<p>Then, run the following command to run the rest of the setup.
+<code>ruboto setup</code>
+The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
 
 <p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
 ]]></content>
@@ -125,7 +108,7 @@
 <h1>Ruboto</h1>
 
 
-<p>Ruboto is a</p>
+<p>Ruboto is a framework to allow</p>
 
 <p><a href="http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/">http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/</a></p>
 
@@ -142,7 +125,7 @@
 <h1>Pindah</h1>
 
 
-<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>)</p>
+<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <code>https://github.com/mirah/mirah/wiki/Differences-from-Ruby</code>)</p>
 
 <p><a href="http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/">http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/</a></p>
 
