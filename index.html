@@ -96,9 +96,9 @@
 <h2>Setup:</h2>
 
 
-<p>To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should be installed through <code>http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html</code>. If you are using RVM, JRuby should be installed through (rvm install jruby-1.7.10). Then, to install Mirah, you have to use JRuby through <code>rvm use jruby-1.7.10</code> and then <code>gem install mirah-0.1.2</code>. Then, Rake can simply be gem installed via <code>gem install rake</code>.</p>
+<p>To set this up, you need JDK 6 or 7, any version of JRuby from 1.7.3 to 1.7.10, Mirah from 0.1.0 to 0.1.2, and Rake above 10.0.3. JDK should be installed through (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html">http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html</a>). If you are using RVM, JRuby should be installed through <code>rvm install jruby-1.7.10</code>. Then, to install Mirah, you have to use JRuby through <code>rvm use jruby-1.7.10</code> and then <code>gem install mirah-0.1.2</code>. Then, Rake can simply be gem installed via <code>gem install rake</code>.</p>
 
-<p>As it turns out, if you visit the pindah github page <code>https://github.com/mirah/pindah/</code>, at the time of this writing at least, the table under JRuby/Mirah Compatibility only goes up to <code>JRuby 1.7.10</code> and <code>Mirah 0.1.2</code>. This proved to be annoying to figure out because when I gem installed jruby, I got version 1.7.13, which I later found out was incompatible with Mirah 0.1.2. With RVM (which is what I use), you can easily switch jruby versions by doing <code>rvm use jruby-1.7.10</code>.</p>
+<p>As it turns out, if you visit the pindah github page (<a href="https://github.com/mirah/pindah/">https://github.com/mirah/pindah/</a>), at the time of this writing at least, the table under JRuby/Mirah Compatibility only goes up to <code>JRuby 1.7.10</code> and <code>Mirah 0.1.2</code>. This proved to be annoying to figure out because when I gem installed jruby, I got version 1.7.13, which I later found out was incompatible with Mirah 0.1.2. With RVM (which is what I use), you can easily switch jruby versions by doing <code>rvm use jruby-1.7.10</code>.</p>
 
 <p>You must also use JDK 6 or 7, and at the time of this writing, JDK 8 is out. Thus, you have to downgrade JDK to the appropriate version to make this work, and OS X doesn&rsquo;t seem to provide an easy way to do this. Thus, adding the following lines of code to your bash_profile via <code>cd ~/.bash_profile</code> should set the default JDK version number to 7. (Remember to actually download JDK 7 from the Java website.)</p>
 
@@ -138,6 +138,13 @@
 
 <p>and have the output,
 <code>Hello, Mirah!</code></p>
+
+<h1>Additional Resources</h1>
+
+
+<p><a href="http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307">http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307</a>
+<a href="http://thelogbox.com/android-programming-mirah-pindah/">http://thelogbox.com/android-programming-mirah-pindah/</a>
+<a href="http://pullmonkey.com/2011/11/13/hello-android-pindah-with-mirah-application/">http://pullmonkey.com/2011/11/13/hello-android-pindah-with-mirah-application/</a></p>
 </div>
   
   
@@ -188,6 +195,13 @@
 The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
 
 <p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
+
+<h1>Additional Resources</h1>
+
+
+<p><a href="http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/">http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/</a>
+<a href="http://ruboto.org/">http://ruboto.org/</a>
+<a href="http://rubylearning.com/blog/ruboto-quick-start/">http://rubylearning.com/blog/ruboto-quick-start/</a> (also helps set up an Android Virtual Device)</p>
 </div>
   
   
@@ -225,21 +239,33 @@ The android developer website has a great section on how to install the android 
 
   <div class="entry-content"><p>THIS POST IS STILL UNDER DEVELOPMENT AND WILL BE FINISHED SOON.</p>
 
-<p>I would like to preface this blog post with the statement that I am only starting android development myself. While this definitely gives me less credibility due to my lack of experience, it also gave me the foresight to make this blog post at all since I was looking for such a resource when deciding which platform to use for android development. From my googling, I found that there are four major android development platforms one can use when coding in Ruby: Ruboto, Pindah, Rhodes, and SL4A. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah. These two technologies seem to be the most promising, so they naturally piqued my interest the most.</p>
+<p>This blog post is mainly a compilation of my googling Ruboto, Pindah, Rhodes, and SL4A when deciding which platform to use for android development. None of this information is my own opinion (except perhaps the conclusion in which I choose one to learn). I chose these four technologies because they are all platforms on which to develop android apps with Ruby. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah. These two technologies seem to be the most promising, so they naturally piqued my interest the most.</p>
 
 <h1>Ruboto</h1>
 
 
-<p>Ruboto is a framework to allow</p>
+<p>Ruboto is a framework to allow android developers to use Ruby in order to develop apps. Java source files are compiled and packed together with JRuby JARs to give you access to the Android API. You can then run your custom Ruby script with this API to create your Android app.</p>
 
 <p><a href="http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/">http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/</a></p>
 
 <h2>Pros:</h2>
 
 
+<ul>
+  <li>Does not need to recompile the entire application</li>
+  <li>Has IRB built-in</li>
+</ul>
+
+
 
 
 <h2>Cons:</h2>
+
+
+<ul>
+  <li>Has a large runtime library (simple Hello World app is several MB large)</li>
+  <li>Subjected to JRuby initialization costs. Start up for app is several seconds long.</li>
+</ul>
 
 
 
@@ -247,16 +273,29 @@ The android developer website has a great section on how to install the android 
 <h1>Pindah</h1>
 
 
-<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <code>https://github.com/mirah/mirah/wiki/Differences-from-Ruby</code>)</p>
+<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>). Mirah is static typed and runs on JVM.</p>
 
 <p><a href="http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/">http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/</a></p>
 
 <h2>Pros:</h2>
 
 
+<ul>
+  <li>Ends up as JVM bytecode</li>
+  <li>Runs as fast as Java.</li>
+  <li>Similar syntax to Ruby</li>
+  <li>No runtime library</li>
+</ul>
+
+
 
 
 <h2>Cons:</h2>
+
+
+<ul>
+  <li>Still extremely new</li>
+</ul>
 
 
 
@@ -264,14 +303,30 @@ The android developer website has a great section on how to install the android 
 <h1>Rhodes</h1>
 
 
+<p>The Rhodes Framework is more formally known as the RhoMobile Suite, and it is an open-source framework created by Motorola. It compiles down to Ruby bytecode and does not use the Dalvik JVM. It is very popular among large companies because it supports all major smartphone platforms.</p>
 
+<p>To install Rhodes: <a href="http://docs.rhomobile.com/en/2.2.0/rhodes/tutorial">http://docs.rhomobile.com/en/2.2.0/rhodes/tutorial</a></p>
 
 <h2>Pros:</h2>
+
+
+<ul>
+  <li>Cross-platform (supports all major smartphone platforms)</li>
+  <li>Can compile iOS apps on Windows</li>
+  <li>Uses HTML</li>
+  <li>Supports synchronized offline data</li>
+  <li>Has an IDE(Rhostudio)</li>
+</ul>
 
 
 
 
 <h2>Cons:</h2>
+
+
+<ul>
+  <li></li>
+</ul>
 
 
 
@@ -279,9 +334,16 @@ The android developer website has a great section on how to install the android 
 <h1>SL4A</h1>
 
 
-
+<p>SL4A is a simple abbreviation for Scripting Layer for Android, which was previously called Android Scripting Environment (ASE). It is a great way to write scripts for Android, but it is not meant for production use.</p>
 
 <h2>Pros:</h2>
+
+
+<ul>
+  <li>Has a simplified interface</li>
+  <li>Supports many languages (e.g. Python, Perl, Ruby, Javascript)</li>
+  <li>Great for scripting</li>
+</ul>
 
 
 
@@ -289,7 +351,42 @@ The android developer website has a great section on how to install the android 
 <h2>Cons:</h2>
 
 
+<ul>
+  <li>Still alpha software</li>
+  <li>Is meant for developers</li>
+  <li>Android needs SL4A installed to run scripts</li>
+</ul>
 
+
+
+
+<h1>Conclusion</h1>
+
+
+<p>I personally decided to go with Mirah/Pindah because</p>
+
+<h1>Additional Resources</h1>
+
+
+<p>Ruboto
+<a href="http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/">http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/</a>
+<a href="http://ruboto.org/">http://ruboto.org/</a>
+<a href="http://rubylearning.com/blog/ruboto-quick-start/">http://rubylearning.com/blog/ruboto-quick-start/</a> (also helps set up an Android Virtual Device)
+<a href="https://www.youtube.com/watch?v=3074P4juuXs">https://www.youtube.com/watch?v=3074P4juuXs</a></p>
+
+<p>Mirah
+<a href="http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307">http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307</a>
+<a href="http://thelogbox.com/android-programming-mirah-pindah/">http://thelogbox.com/android-programming-mirah-pindah/</a>
+<a href="http://confreaks.com/videos/196-rubyconf2009-ruby-mutants">http://confreaks.com/videos/196-rubyconf2009-ruby-mutants</a></p>
+
+<p>Rhodes
+<a href="https://www.youtube.com/watch?v=asXhmWXcxBY">https://www.youtube.com/watch?v=asXhmWXcxBY</a>
+<a href="http://docs.rhomobile.com/en/2.2.0/rhodes/build">http://docs.rhomobile.com/en/2.2.0/rhodes/build</a>
+<a href="http://rubylearning.com/blog/2010/12/07/want-to-build-a-mobile-app-on-an-android%E2%84%A2-phone-with-rhodes/">http://rubylearning.com/blog/2010/12/07/want-to-build-a-mobile-app-on-an-android%E2%84%A2-phone-with-rhodes/</a>
+<a href="http://www.slideshare.net/adamblum/using-ruby-in-android-development">http://www.slideshare.net/adamblum/using-ruby-in-android-development</a></p>
+
+<p>SL4A
+<a href="https://code.google.com/p/android-scripting/wiki/FAQ">https://code.google.com/p/android-scripting/wiki/FAQ</a></p>
 </div>
   
   
