@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-07-14T10:40:47-04:00</updated>
+  <updated>2014-07-14T11:43:33-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -112,12 +112,12 @@ The android developer website has a great section on how to install the android 
     <id>http://jusjmkim.github.io/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a</id>
     <content type="html"><![CDATA[<p>THIS POST IS STILL UNDER DEVELOPMENT AND WILL BE FINISHED SOON.</p>
 
-<p>This blog post is mainly a compilation of my googling Ruboto, Pindah, Rhodes, and SL4A when deciding which platform to use for android development. None of this information is my own opinion (except perhaps the conclusion in which I choose one to learn). I chose these four technologies because they are all platforms on which to develop android apps with Ruby. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah. These two technologies seem to be the most promising, so they naturally piqued my interest the most.</p>
+<p>This blog post is mainly a compilation of my googling Ruboto, Pindah, Rhodes, and SL4A when deciding which platform to use for android development. None of this information is my own opinion (except perhaps the conclusion in which I choose one to learn). I chose these four technologies because they are all platforms on which to develop native android apps with Ruby. I will be discussing the pros and cons of each of these, with particular emphasis on Ruboto and Pindah.</p>
 
 <h1>Ruboto</h1>
 
 
-<p>Ruboto is a framework to allow android developers to use Ruby in order to develop apps. Java source files are compiled and packed together with JRuby JARs to give you access to the Android API. You can then run your custom Ruby script with this API to create your Android app.</p>
+<p>Ruboto is a framework to allow android developers to use Ruby in order to develop apps. Java source files are compiled and packed together with JRuby JARs to give you access to the Android API. You can then run your custom Ruby script with this API to create your Android app. At the time of this writing, Ruboto is gaining a lot of popularity.</p>
 
 <p><a href="http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/">http://jusjmkim.github.io/blog/2014/07/10/installing-ruboto/</a></p>
 
@@ -127,6 +127,7 @@ The android developer website has a great section on how to install the android 
 <ul>
   <li>Does not need to recompile the entire application</li>
   <li>Has IRB built-in</li>
+  <li>Good documentation</li>
 </ul>
 
 
@@ -146,7 +147,7 @@ The android developer website has a great section on how to install the android 
 <h1>Pindah</h1>
 
 
-<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>). Mirah is static typed and runs on JVM.</p>
+<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>). Mirah is static typed and runs on JVM. While developers are a little wary of how young Mirah is, there is a lot of excitement over its compiling to JVM bytecode.</p>
 
 <p><a href="http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/">http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/</a></p>
 
@@ -168,6 +169,8 @@ The android developer website has a great section on how to install the android 
 
 <ul>
   <li>Still extremely new</li>
+  <li>Not as much documentation</li>
+  <li>Pindah is infrequently updated</li>
 </ul>
 
 
@@ -176,7 +179,7 @@ The android developer website has a great section on how to install the android 
 <h1>Rhodes</h1>
 
 
-<p>The Rhodes Framework is more formally known as the RhoMobile Suite, and it is an open-source framework created by Motorola. It compiles down to Ruby bytecode and does not use the Dalvik JVM. It is very popular among large companies because it supports all major smartphone platforms.</p>
+<p>The Rhodes Framework is more formally known as the RhoMobile Suite, and it is an open-source framework created by Motorola. It compiles down to Ruby bytecode and does not use the Dalvik JVM. It is very popular among large companies because it supports all major smartphone platforms. It structured similarly to Rails in its use of Object Relational Mapping (ORM) and the Model-View-Controller (MVC) framework.</p>
 
 <p>To install Rhodes: <a href="http://docs.rhomobile.com/en/2.2.0/rhodes/tutorial">http://docs.rhomobile.com/en/2.2.0/rhodes/tutorial</a></p>
 
@@ -189,6 +192,7 @@ The android developer website has a great section on how to install the android 
   <li>Uses HTML</li>
   <li>Supports synchronized offline data</li>
   <li>Has an IDE(Rhostudio)</li>
+  <li>Structured very similarly to Rails (e.g. Has ORMs and an MVC framework)</li>
 </ul>
 
 
@@ -198,7 +202,7 @@ The android developer website has a great section on how to install the android 
 
 
 <ul>
-  <li></li>
+  <li>There is the temptation to use the same code base for all platforms</li>
 </ul>
 
 
@@ -207,7 +211,7 @@ The android developer website has a great section on how to install the android 
 <h1>SL4A</h1>
 
 
-<p>SL4A is a simple abbreviation for Scripting Layer for Android, which was previously called Android Scripting Environment (ASE). It is a great way to write scripts for Android, but it is not meant for production use.</p>
+<p>SL4A is a simple abbreviation for Scripting Layer for Android, which was previously called Android Scripting Environment (ASE). It is a great way to write scripts for Android, but it is not meant for production use, especially because the Android device needs SL4A installed to run the scripts.</p>
 
 <h2>Pros:</h2>
 
@@ -236,7 +240,7 @@ The android developer website has a great section on how to install the android 
 <h1>Conclusion</h1>
 
 
-<p>I personally decided to go with Mirah/Pindah because</p>
+<p>I personally decided to go with Rhodes because my background is primarily in Rails (as are most Ruby developers&#8217;), so the learning curve should be much nicer. It is widely adopted and versatile in its platform support. As a second choice, I would have probably gone with Pindah because of its sheer speed and small fingerprint. I will probably write another blog post about my experience with Rhodes, so stay tuned!</p>
 
 <h1>Additional Resources</h1>
 
@@ -256,10 +260,16 @@ The android developer website has a great section on how to install the android 
 <a href="https://www.youtube.com/watch?v=asXhmWXcxBY">https://www.youtube.com/watch?v=asXhmWXcxBY</a>
 <a href="http://docs.rhomobile.com/en/2.2.0/rhodes/build">http://docs.rhomobile.com/en/2.2.0/rhodes/build</a>
 <a href="http://rubylearning.com/blog/2010/12/07/want-to-build-a-mobile-app-on-an-android%E2%84%A2-phone-with-rhodes/">http://rubylearning.com/blog/2010/12/07/want-to-build-a-mobile-app-on-an-android%E2%84%A2-phone-with-rhodes/</a>
-<a href="http://www.slideshare.net/adamblum/using-ruby-in-android-development">http://www.slideshare.net/adamblum/using-ruby-in-android-development</a></p>
+<a href="http://www.slideshare.net/adamblum/using-ruby-in-android-development">http://www.slideshare.net/adamblum/using-ruby-in-android-development</a>
+<a href="http://devproconnections.com/development/product-review-rhomobiles-rhombus-smartphone-app-development-product-suite">http://devproconnections.com/development/product-review-rhomobiles-rhombus-smartphone-app-development-product-suite</a>
+<a href="http://docs.rhomobile.com/en/2.2.0/rhodes/install">http://docs.rhomobile.com/en/2.2.0/rhodes/install</a>
+<a href="http://techleap.blogspot.com/2011/04/how-to-make-your-first-application.html">http://techleap.blogspot.com/2011/04/how-to-make-your-first-application.html</a></p>
 
 <p>SL4A
 <a href="https://code.google.com/p/android-scripting/wiki/FAQ">https://code.google.com/p/android-scripting/wiki/FAQ</a></p>
+
+<p>Miscellaneous
+<a href="https://groups.google.com/forum/#!topic/dallasrb/LOq7uVh_sic">https://groups.google.com/forum/#!topic/dallasrb/LOq7uVh_sic</a></p>
 ]]></content>
   </entry>
   
