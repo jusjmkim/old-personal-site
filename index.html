@@ -95,170 +95,12 @@
 
 <p>In simpler terms, geolocation is how Google Maps figures out where you are. In order to incorporate this technology into your app, you need to use the Google Maps Javascript API. The documentation can be found at <a href="https://developers.google.com/maps/articles/geolocation">https://developers.google.com/maps/articles/geolocation</a> (copy and paste into browser). An example of the code can be found at <a href="https://developers.google.com/maps/documentation/javascript/examples/map-geolocation">https://developers.google.com/maps/documentation/javascript/examples/map-geolocation</a> (copy and paste into browser). It has also been pasted below. While it may be of interest to some people to go through each line of the code and its function, I think it would probably me more efficient/practical to explain the code with much less resolution.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span class='line'><span class="nt">&lt;html&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;head&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;title&gt;</span>Geolocation<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;initial-scale=1.0, user-scalable=no&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;style&gt;</span>
-</span><span class='line'>      <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span><span class="o">,</span> <span class="nf">#map-canvas</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">height</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">margin</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">padding</span><span class="o">:</span> <span class="m">0px</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="nt">&lt;/style&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://maps.googleapis.com/maps/api/js?v=3.exp&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nt">&lt;script&gt;</span>
-</span><span class='line'><span class="c1">// Note: This example requires that you consent to location sharing when</span>
-</span><span class='line'><span class="c1">// prompted by your browser. If you see a blank space instead of the map, this</span>
-</span><span class='line'><span class="c1">// is probably because you have denied permission for location sharing.</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">map</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">function</span> <span class="nx">initialize</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">mapOptions</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">zoom</span><span class="o">:</span> <span class="mi">6</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;map-canvas&#39;</span><span class="p">),</span>
-</span><span class='line'>      <span class="nx">mapOptions</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// Try HTML5 geolocation</span>
-</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">pos</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">,</span>
-</span><span class='line'>                                       <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">infowindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">InfoWindow</span><span class="p">({</span>
-</span><span class='line'>        <span class="nx">map</span><span class="o">:</span> <span class="nx">map</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">position</span><span class="o">:</span> <span class="nx">pos</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Location found using HTML5.&#39;</span>
-</span><span class='line'>      <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="nx">map</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">(</span><span class="nx">pos</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">handleNoGeolocation</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// Browser doesn&#39;t support Geolocation</span>
-</span><span class='line'>    <span class="nx">handleNoGeolocation</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">function</span> <span class="nx">handleNoGeolocation</span><span class="p">(</span><span class="nx">errorFlag</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">errorFlag</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;Error: The Geolocation service failed.&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;Error: Your browser doesn\&#39;t support geolocation.&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">map</span><span class="o">:</span> <span class="nx">map</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">position</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">105</span><span class="p">),</span>
-</span><span class='line'>    <span class="nx">content</span><span class="o">:</span> <span class="nx">content</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">infowindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">InfoWindow</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">map</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">position</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addDomListener</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="nx">initialize</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/head&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;map-canvas&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>First, it should be noted that it would be much better practice to encapsulate all of this javascript in its own file, let&rsquo;s call it map.js, and reference it in the html file as follows: <code>&lt;script type="text/javascript" src="map.js"&gt;&lt;/script&gt;</code> (even better would be if the map.js were in a javascripts directory as well).</p>
-
-<p>Because of line 27, the element with the id, &lsquo;map-canvas&rsquo;, is going to contain the Google Map. Line 31 really just gives the conditional that the browser supports HTML5, in which case, geolocation should be possible. If it doesn&rsquo;t it will default to setting the map to center on Siberia, as indicated in lines 59-66.</p>
-
-<p>The meat of this code base is really in lines 32-34, in which the actual geolocation happens. The navigator.geolocation.getCurrentPosition method gets the geolocated coordinates, and the position variable (which contains data from the geolocation) is passed into an anonymous function. In line 33, a LatLng object is created from the position variable, so the rest of the Google Maps API can use the data, such as in line 42. The LatLng object is passed into the setCenter method to center the map on the geolocated coordinates.</p>
-
-<p>While in retrospect, this code base really wasn&rsquo;t that complex, it certainly intimidated me at first, so I hope my breaking down the important parts of it helped.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/28/geolocation-with-the-google-maps-api/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -303,52 +145,12 @@
 
 <p>You must also use JDK 6 or 7, and at the time of this writing, JDK 8 is out. Thus, you have to downgrade JDK to the appropriate version to make this work, and OS X doesn&rsquo;t seem to provide an easy way to do this. Thus, adding the following lines of code to your bash_profile via <code>cd ~/.bash_profile</code> should set the default JDK version number to 7. (Remember to actually download JDK 7 from the Java website.)</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>setjdk<span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-ne 0 <span class="o">]</span>; <span class="k">then  </span>
-</span><span class='line'><span class="k">   </span>removeFromPath <span class="s1">&#39;/System/Library/Frameworks/JavaVM.framework/Home/bin&#39;</span>
-</span><span class='line'>   <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;${JAVA_HOME+x}&quot;</span> <span class="o">]</span>; <span class="k">then  </span>
-</span><span class='line'><span class="k">    </span>removeFromPath <span class="nv">$JAVA_HOME</span>/bin
-</span><span class='line'>   <span class="k">fi  </span>
-</span><span class='line'><span class="k">   </span><span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="sb">`</span>/usr/libexec/java_home -v <span class="nv">$@</span><span class="sb">`</span>
-</span><span class='line'>   <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
-</span><span class='line'>  <span class="k">fi</span>
-</span><span class='line'> <span class="o">}</span>
-</span><span class='line'> <span class="k">function </span>removeFromPath<span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>  <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$PATH</span> | sed -E -e <span class="s2">&quot;s;:$1;;&quot;</span> -e <span class="s2">&quot;s;$1:?;;&quot;</span><span class="k">)</span>
-</span><span class='line'> <span class="o">}</span>
-</span><span class='line'>setjdk 1.7
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>To test if it works, in your bash, you should run the following line,
-<code>mirah -e 'puts "Hello, Mirah!"'</code></p>
-
-<p>and have the output,
-<code>Hello, Mirah!</code></p>
-
-<h1>Additional Resources</h1>
-
-
-<p><a href="http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307">http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307</a>
-<a href="http://thelogbox.com/android-programming-mirah-pindah/">http://thelogbox.com/android-programming-mirah-pindah/</a>
-<a href="http://pullmonkey.com/2011/11/13/hello-android-pindah-with-mirah-application/">http://pullmonkey.com/2011/11/13/hello-android-pindah-with-mirah-application/</a>
-<a href="http://confreaks.com/videos/196-rubyconf2009-ruby-mutants">http://confreaks.com/videos/196-rubyconf2009-ruby-mutants</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/10/installing-pindah/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -396,17 +198,12 @@
 <code>ruboto setup</code>
 The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
 
-<p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
-
-<h1>Additional Resources</h1>
-
-
-<p><a href="http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/">http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/</a>
-<a href="http://ruboto.org/">http://ruboto.org/</a>
-<a href="http://rubylearning.com/blog/ruboto-quick-start/">http://rubylearning.com/blog/ruboto-quick-start/</a> (also helps set up an Android Virtual Device)
-<a href="https://www.youtube.com/watch?v=3074P4juuXs">https://www.youtube.com/watch?v=3074P4juuXs</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/10/installing-ruboto/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -470,139 +267,12 @@ The android developer website has a great section on how to install the android 
 </ul>
 
 
-
-
-<h1>Pindah</h1>
-
-
-<p>Pindah is definitely an interesting piece of technology as it utilizes a new language called Mirah. It was developed by the same person who made JRuby, and he made it to seem extremely similar to Ruby. (The differences between the two are listed here: <a href="https://github.com/mirah/mirah/wiki/Differences-from-Ruby">https://github.com/mirah/mirah/wiki/Differences-from-Ruby</a>). Mirah is static typed and runs on JVM. While developers are a little wary of how young Mirah is, there is a lot of excitement over its compiling to JVM bytecode.</p>
-
-<p><a href="http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/">http://jusjmkim.github.io/blog/2014/07/10/installing-pindah/</a></p>
-
-<h2>Pros:</h2>
-
-
-<ul>
-  <li>Ends up as JVM bytecode</li>
-  <li>Runs as fast as Java.</li>
-  <li>Similar syntax to Ruby</li>
-  <li>No runtime library</li>
-</ul>
-
-
-
-
-<h2>Cons:</h2>
-
-
-<ul>
-  <li>Still extremely new</li>
-  <li>Not as much documentation</li>
-  <li>Pindah is infrequently updated</li>
-</ul>
-
-
-
-
-<h1>Rhodes</h1>
-
-
-<p>The Rhodes Framework is more formally known as the RhoMobile Suite, and it is an open-source framework created by Motorola. It compiles down to Ruby bytecode and does not use the Dalvik JVM. It is very popular among large companies because it supports all major smartphone platforms. It structured similarly to Rails in its use of Object Relational Mapping (ORM) and the Model-View-Controller (MVC) framework. Note that Rhodes only supports up to Ruby 1.9.3 at the time of this writing.</p>
-
-<p>To install Rhodes: <a href="http://docs.rhomobile.com/en/2.2.0/rhodes/tutorial.">http://docs.rhomobile.com/en/2.2.0/rhodes/tutorial.</a> Note that it does not support (at the time of this writing) android-ndk r9d. r8d worked for me. Use this link to learn to brew install the specific version (<a href="http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula">http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula</a>). I recommend reading all the links I provided because they have all proven to be extremely helpful. While I provided installation posts to Pindah and Ruboto, I will not for Rhodes because my installation process was extremely convoluted and confusing, and I can&rsquo;t remember how I did it exactly (or really which steps actually worked). I will note, though, that I could not rake run:android on Terminal, but I got the Android Virtual Device working on RhoStudio, so that&rsquo;s probably the best way to go.</p>
-
-<h2>Pros:</h2>
-
-
-<ul>
-  <li>Cross-platform (supports all major smartphone platforms)</li>
-  <li>Can compile iOS apps on Windows</li>
-  <li>Uses HTML</li>
-  <li>Supports synchronized offline data</li>
-  <li>Has an IDE(Rhostudio)</li>
-  <li>Structured very similarly to Rails (e.g. Has ORMs and an MVC framework)</li>
-</ul>
-
-
-
-
-<h2>Cons:</h2>
-
-
-<ul>
-  <li>There is the temptation to use the same code base for all platforms</li>
-</ul>
-
-
-
-
-<h1>SL4A</h1>
-
-
-<p>SL4A is a simple abbreviation for Scripting Layer for Android, which was previously called Android Scripting Environment (ASE). It is a great way to write scripts for Android, but it is not meant for production use, especially because the Android device needs SL4A installed to run the scripts.</p>
-
-<h2>Pros:</h2>
-
-
-<ul>
-  <li>Has a simplified interface</li>
-  <li>Supports many languages (e.g. Python, Perl, Ruby, Javascript)</li>
-  <li>Great for scripting</li>
-</ul>
-
-
-
-
-<h2>Cons:</h2>
-
-
-<ul>
-  <li>Still alpha software</li>
-  <li>Is meant for developers</li>
-  <li>Android needs SL4A installed to run scripts</li>
-</ul>
-
-
-
-
-<h1>Conclusion</h1>
-
-
-<p>I personally decided to go with Rhodes because my background is primarily in Rails (as are most Ruby developers&#8217;), so the learning curve should be much nicer. It is widely adopted and versatile in its platform support. As a second choice, I would have probably gone with Pindah because of its sheer speed and small fingerprint. I will probably write another blog post about my experience with Rhodes, so stay tuned!</p>
-
-<h1>Additional Resources</h1>
-
-
-<p>Ruboto<br>
-<a href="http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/">http://www.sitepoint.com/ruboto-rubys-and-androids-first-born/</a><br>
-<a href="http://ruboto.org/">http://ruboto.org/</a><br>
-<a href="http://rubylearning.com/blog/ruboto-quick-start/">http://rubylearning.com/blog/ruboto-quick-start/</a> (also helps set up an Android Virtual Device)
-<a href="https://www.youtube.com/watch?v=3074P4juuXs">https://www.youtube.com/watch?v=3074P4juuXs</a><br></p>
-
-<p>Mirah<br>
-<a href="http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307">http://www.drdobbs.com/jvm/language-of-the-month-mirah/229400307</a><br>
-<a href="http://thelogbox.com/android-programming-mirah-pindah/">http://thelogbox.com/android-programming-mirah-pindah/</a><br>
-<a href="http://pullmonkey.com/2011/11/13/hello-android-pindah-with-mirah-application/">http://pullmonkey.com/2011/11/13/hello-android-pindah-with-mirah-application/</a><br>
-<a href="http://confreaks.com/videos/196-rubyconf2009-ruby-mutants">http://confreaks.com/videos/196-rubyconf2009-ruby-mutants</a><br></p>
-
-<p>Rhodes<br>
-<a href="https://www.youtube.com/watch?v=asXhmWXcxBY">https://www.youtube.com/watch?v=asXhmWXcxBY</a><br>
-<a href="http://docs.rhomobile.com/en/2.2.0/rhodes/build">http://docs.rhomobile.com/en/2.2.0/rhodes/build</a><br>
-<a href="http://rubylearning.com/blog/2010/12/07/want-to-build-a-mobile-app-on-an-android%E2%84%A2-phone-with-rhodes/">http://rubylearning.com/blog/2010/12/07/want-to-build-a-mobile-app-on-an-android%E2%84%A2-phone-with-rhodes/</a><br>
-<a href="http://www.slideshare.net/adamblum/using-ruby-in-android-development">http://www.slideshare.net/adamblum/using-ruby-in-android-development</a><br>
-<a href="http://devproconnections.com/development/product-review-rhomobiles-rhombus-smartphone-app-development-product-suite">http://devproconnections.com/development/product-review-rhomobiles-rhombus-smartphone-app-development-product-suite</a><br>
-<a href="http://docs.rhomobile.com/en/2.2.0/rhodes/install">http://docs.rhomobile.com/en/2.2.0/rhodes/install</a><br>
-<a href="http://techleap.blogspot.com/2011/04/how-to-make-your-first-application.html">http://techleap.blogspot.com/2011/04/how-to-make-your-first-application.html</a><br>
-<a href="https://gist.github.com/nicksoto/2879726">https://gist.github.com/nicksoto/2879726</a><br>
-<a href="https://github.com/rhomobile/rhodes/issues/191">https://github.com/rhomobile/rhodes/issues/191</a><br></p>
-
-<p>SL4A<br>
-<a href="https://code.google.com/p/android-scripting/wiki/FAQ">https://code.google.com/p/android-scripting/wiki/FAQ</a><br></p>
-
-<p>Miscellaneous<br>
-<a href="https://groups.google.com/forum/#!topic/dallasrb/LOq7uVh_sic">https://groups.google.com/forum/#!topic/dallasrb/LOq7uVh_sic</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/09/ruboto-vs-pindah-vs-rhodes-vs-sl4a/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -640,99 +310,12 @@ The android developer website has a great section on how to install the android 
 
 <p>A comparison of Javascript objects and Ruby hashes came to mind because their syntaxes are extremely similar. One can define a Javascript object through literal notation, as shown below.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">key1</span><span class="o">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">key2</span><span class="o">:</span> <span class="s2">&quot;value2&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>At the same time, one can define a Ruby hash through literal notation as well.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="ss">key1</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="ss">key2</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Literally, the only difference in syntax would be the var in front of obj in the Javascript version. In terms of functionality, the two data structures are incredibly similar as they both store data with key-value pairs. In fact, the syntax to call value1 in both structures is incredibly similar.</p>
-
-<p>In Javascript, it would be:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">obj</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and in Ruby, it would be:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span><span class="o">[</span><span class="ss">:key1</span><span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This difference in syntax hints at one of the subtle differences between these two data structures. In Javascript, the colons are a necessity and simply link corresponding keys and values. In Ruby, however, this syntax implies that the key is a certain data type called a symbol, and in more explicit syntax, the hash can also be declared with hash rockets as such:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="ss">:key1</span> <span class="o">=&gt;</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="ss">:key2</span> <span class="o">=&gt;</span> <span class="s2">&quot;value2&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>For both languages, the key can be data types other than strings or symbols. It is interesting to note that both languages are object oriented languages, and most things are objects in both languages. Thus, it comes as no surprise that hashes in Ruby are also objects. There is a distinction, though, between the construction behind Javascript objects and Ruby hashes since, as the name would imply, Javascript objects represent the general construction behind all objects in Javascript while hashes are just one type of object in Ruby.</p>
-
-<p>The fact that they are both objects is apparent as they can both be declared through constructors. This shows that they are both instances of their respective classes. In Javascript, it would be:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>while in Ruby, it would be:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It is interesting to note that values stored in Javascript can be called through the dot notation, as shown below.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">key1</span><span class="o">:</span> <span class="nx">value</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">key1</span> <span class="o">===</span> <span class="nx">value</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This is exactly the syntax to call an instant variable through a reader method in Ruby (and many other object oriented languages). However, these are not instance variables, so you are not using reader methods. Ultimately, these are two very different data types, but they both store data and have syntaxes so similar that I thought it would be worth mentioning. I&rsquo;m also not entirely sure if the difference between the two is significant, so upon future research (and my remembering to update this post), I will update this information accordingly.</p>
-
-<p>Additional Resources</p>
-
-<p><a href="http://blog.flatironschool.com/post/67666573907/javascript-vs-ruby">http://blog.flatironschool.com/post/67666573907/javascript-vs-ruby</a></p>
-
-<p><a href="http://stantona.github.io/blog/2012/12/12/a-tale-of-two-object-models-javascript-and-ruby/">http://stantona.github.io/blog/2012/12/12/a-tale-of-two-object-models-javascript-and-ruby/</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/30/comparing-javascript-objects-with-ruby-hashes/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -768,107 +351,12 @@ The android developer website has a great section on how to install the android 
 
   <div class="entry-content"><p>As test driven development becomes increasingly popular, the desire to test every facet of a piece of a code arises. My group found ourselves in this situation while trying to scrape from Twitter with a Ruby Gem called Nokogiri. However, when we ran our rspec test suite on our code (testing it with one of our twitters), we got this failure:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>expected: <span class="s2">&quot;New blog post about using abstraction and hashes to sort a music collection http://callahanchris.github.io/blog/2014/06/09/abstraction-and-music-library-sorting/ ... @aviflombaum&quot;</span>
-</span><span class='line'>got: <span class="s2">&quot;New blog post about using abstraction and hashes to sort a music collection http://callahanchris.github.io/blog/2014/06/09/abstraction-and-music-library-sorting/ ... @aviflombaum&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>These strings look exactly the same to us (the ends of the strings are also identical. I just took a screenshot of part of it too keep it all readable), and we should have been smart and basically considered this test a success. But, this project was more of an educational effort than anything else, and test-driven development dictates that we pass all our tests. Thus, we decided to look into this issue and find another way to test our code. After looking at the tweet&rsquo;s source code, we found this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ProfileTweet-contents&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;ProfileTweet-text js-tweet-text u-dir&quot;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="na">dir=</span><span class="s">&quot;ltr&quot;</span><span class="nt">&gt;</span>New blog post about using abstraction and hashes to sort a music collection
-</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://t.co/jRE2HgXYgi&quot;</span> <span class="na">rel=</span><span class="s">&quot;nofollow&quot;</span> <span class="na">dir=</span><span class="s">&quot;ltr&quot;</span>
-</span><span class='line'>    <span class="na">data-expanded-url=</span><span class="s">&quot;http://callahanchris.github.io/blog/2014/06/09/abstraction-and-music-library-sorting/&quot;</span>
-</span><span class='line'>    <span class="na">class=</span><span class="s">&quot;twitter-timeline-link&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span> <span class="na">title=</span><span class="s">&quot;http://callahanchris.github.io/blog/2014/06/09/abstraction-and-music-library-sorting/&quot;</span> <span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;tco-ellipsis&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;invisible&quot;</span><span class="nt">&gt;</span>http://<span class="nt">&lt;/span&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;js-display-url&quot;</span><span class="nt">&gt;</span>callahanchris.github.io/blog/2014/06/0<span class="nt">&lt;/span&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;invisible&quot;</span><span class="nt">&gt;</span>9/abstraction-and-music-library-sorting/<span class="nt">&lt;/span&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;tco-ellipsis&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;invisible&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>…<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/aviflombaum&quot;</span> <span class="na">class=</span><span class="s">&quot;twitter-atreply pretty-link&quot;</span> <span class="na">dir=</span><span class="s">&quot;ltr&quot;</span> <span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;s&gt;</span>@<span class="nt">&lt;/s&gt;&lt;b&gt;</span>aviflombaum<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It seems that while the strings seem to be displaying the same, the actual output is still a Nokogiri XML output. If that was true, we couldn&rsquo;t go about validating the tweet directly. I wasn&rsquo;t sure what to do to test my code until I saw this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;js-short-timestamp &quot;</span>
-</span><span class='line'>  <span class="na">data-time=</span><span class="s">&quot;1402347168&quot;</span>
-</span><span class='line'>  <span class="na">data-long-form=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  Jun 9
-</span><span class='line'><span class="nt">&lt;/span&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Perhaps, we can confirm my code with each tweet&rsquo;s timestamp since every tweet, in theory, has a unique timestamp. After much Nokogiri work, we reached the result below, and it outputted a list of timestamps. (@student_twitters is simply an array of each student&rsquo;s twitter handle urls.)</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">time_stamp</span>
-</span><span class='line'>  <span class="n">time_stamps</span> <span class="o">||=</span> <span class="vi">@student_twitters</span><span class="o">.</span><span class="n">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">twitter_profile</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">page</span> <span class="o">=</span> <span class="ss">Nokogiri</span><span class="p">:</span><span class="ss">:HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">twitter_profile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
-</span><span class='line'>    <span class="n">time_stamp</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;span.js-short-timestamp&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">{</span><span class="o">|</span><span class="n">stamp</span><span class="o">|</span> <span class="n">stamp</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s2">&quot;data-time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">}</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It is important to note that while Nokogiri outputs all of these in square brackets, the output does not behave like an array at all. To be perfectly honest, I am not particularly well-versed in Nokogiri enough to explain why or definitively what is happening under the hood, but most array methods don&rsquo;t seem to work on the entire output. Rather, most methods used on the output only seem to target the first element. As shown in the rspec test suite below, we simply called the second element of the list via its index and asked if it included a timestamp I knew was there.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="s2">&quot;#student_tweets&quot;</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">it</span> <span class="s2">&quot;contains tweets of students&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">expect</span><span class="p">(</span><span class="n">twitter_scrape</span><span class="o">.</span><span class="n">time_stamp</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="kp">include</span><span class="p">(</span><span class="s2">&quot;1402606534&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The code now passed its test suite! Furthermore, if one ever wanted to confirm the equality of twitter instances, on can do so as shown below.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">==</span><span class="p">(</span><span class="n">other_tweet</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">self</span><span class="o">.</span><span class="n">time_stamp</span> <span class="o">==</span> <span class="n">other_tweet</span><span class="o">.</span><span class="n">time_stamp</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Nokogiri is fairly troublesome to use on large html documents, and knowing which css selectors to target and how to test for it may prove to be useful. I hope this post has proven to do just that for at least some of those who have bothered to read this far.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/14/scraping-twitter-timestamps-with-nokogiri/">Read on &rarr;</a>
+    </footer>
   
 
 

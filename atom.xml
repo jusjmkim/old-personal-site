@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-07-29T00:18:23-04:00</updated>
+  <updated>2014-07-29T00:22:24-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -21,6 +21,11 @@
     <content type="html"><![CDATA[<p>According to Google, &ldquo;Geolocation refers to the identification of the geographic location of a user or computing device via a variety of data collection mechanisms.&rdquo;</p>
 
 <p>In simpler terms, geolocation is how Google Maps figures out where you are. In order to incorporate this technology into your app, you need to use the Google Maps Javascript API. The documentation can be found at <a href="https://developers.google.com/maps/articles/geolocation">https://developers.google.com/maps/articles/geolocation</a> (copy and paste into browser). An example of the code can be found at <a href="https://developers.google.com/maps/documentation/javascript/examples/map-geolocation">https://developers.google.com/maps/documentation/javascript/examples/map-geolocation</a> (copy and paste into browser). It has also been pasted below. While it may be of interest to some people to go through each line of the code and its function, I think it would probably me more efficient/practical to explain the code with much less resolution.</p>
+
+<!-- more -->
+
+
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -203,6 +208,9 @@
 
 <p>You must also use JDK 6 or 7, and at the time of this writing, JDK 8 is out. Thus, you have to downgrade JDK to the appropriate version to make this work, and OS X doesn&rsquo;t seem to provide an easy way to do this. Thus, adding the following lines of code to your bash_profile via <code>cd ~/.bash_profile</code> should set the default JDK version number to 7. (Remember to actually download JDK 7 from the Java website.)</p>
 
+<!-- more -->
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -269,6 +277,9 @@
 <code>ruboto setup</code>
 The android developer website has a great section on how to install the android sdk, which you also need, to get ruboto working. <a href="http://developer.android.com/tools/help/sdk-manager.html">http://developer.android.com/tools/help/sdk-manager.html</a></p>
 
+<!-- more -->
+
+
 <p>When they prompt you for your configuration script, type in: .bash_profile because that is one of the files that configures all of your bash settings, such as your environment variables. In this case, Ruboto simply wants to add the relevant directories to your PATH.</p>
 
 <h1>Additional Resources</h1>
@@ -316,6 +327,7 @@ The android developer website has a great section on how to install the android 
 </ul>
 
 
+<!-- more -->
 
 
 <h1>Pindah</h1>
@@ -459,6 +471,9 @@ The android developer website has a great section on how to install the android 
 
 <p>A comparison of Javascript objects and Ruby hashes came to mind because their syntaxes are extremely similar. One can define a Javascript object through literal notation, as shown below.</p>
 
+<!-- more -->
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -559,6 +574,9 @@ The android developer website has a great section on how to install the android 
     <updated>2014-06-14T23:40:00-04:00</updated>
     <id>http://jusjmkim.github.io/blog/2014/06/14/scraping-twitter-timestamps-with-nokogiri</id>
     <content type="html"><![CDATA[<p>As test driven development becomes increasingly popular, the desire to test every facet of a piece of a code arises. My group found ourselves in this situation while trying to scrape from Twitter with a Ruby Gem called Nokogiri. However, when we ran our rspec test suite on our code (testing it with one of our twitters), we got this failure:</p>
+
+<!-- more -->
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

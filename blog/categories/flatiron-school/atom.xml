@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron&nbsp;School | As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-07-29T00:18:23-04:00</updated>
+  <updated>2014-07-29T00:22:24-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -19,6 +19,9 @@
     <updated>2014-06-14T23:40:00-04:00</updated>
     <id>http://jusjmkim.github.io/blog/2014/06/14/scraping-twitter-timestamps-with-nokogiri</id>
     <content type="html"><![CDATA[<p>As test driven development becomes increasingly popular, the desire to test every facet of a piece of a code arises. My group found ourselves in this situation while trying to scrape from Twitter with a Ruby Gem called Nokogiri. However, when we ran our rspec test suite on our code (testing it with one of our twitters), we got this failure:</p>
+
+<!-- more -->
+
 
 <p><code>bash
 expected: "New blog post about using abstraction and hashes to sort a music collection http://callahanchris.github.io/blog/2014/06/09/abstraction-and-music-library-sorting/ ... @aviflombaum"
