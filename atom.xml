@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-07-16T23:04:53-04:00</updated>
+  <updated>2014-07-29T00:18:23-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -12,6 +12,180 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Geolocation with the Google Maps API]]></title>
+    <link href="http://jusjmkim.github.io/blog/2014/07/28/geolocation-with-the-google-maps-api/"/>
+    <updated>2014-07-28T22:16:05-04:00</updated>
+    <id>http://jusjmkim.github.io/blog/2014/07/28/geolocation-with-the-google-maps-api</id>
+    <content type="html"><![CDATA[<p>According to Google, &ldquo;Geolocation refers to the identification of the geographic location of a user or computing device via a variety of data collection mechanisms.&rdquo;</p>
+
+<p>In simpler terms, geolocation is how Google Maps figures out where you are. In order to incorporate this technology into your app, you need to use the Google Maps Javascript API. The documentation can be found at <a href="https://developers.google.com/maps/articles/geolocation">https://developers.google.com/maps/articles/geolocation</a> (copy and paste into browser). An example of the code can be found at <a href="https://developers.google.com/maps/documentation/javascript/examples/map-geolocation">https://developers.google.com/maps/documentation/javascript/examples/map-geolocation</a> (copy and paste into browser). It has also been pasted below. While it may be of interest to some people to go through each line of the code and its function, I think it would probably me more efficient/practical to explain the code with much less resolution.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;title&gt;</span>Geolocation<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;initial-scale=1.0, user-scalable=no&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;style&gt;</span>
+</span><span class='line'>      <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span><span class="o">,</span> <span class="nf">#map-canvas</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">height</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">margin</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">padding</span><span class="o">:</span> <span class="m">0px</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="nt">&lt;/style&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://maps.googleapis.com/maps/api/js?v=3.exp&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;script&gt;</span>
+</span><span class='line'><span class="c1">// Note: This example requires that you consent to location sharing when</span>
+</span><span class='line'><span class="c1">// prompted by your browser. If you see a blank space instead of the map, this</span>
+</span><span class='line'><span class="c1">// is probably because you have denied permission for location sharing.</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">map</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">initialize</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">mapOptions</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">zoom</span><span class="o">:</span> <span class="mi">6</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;map-canvas&#39;</span><span class="p">),</span>
+</span><span class='line'>      <span class="nx">mapOptions</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Try HTML5 geolocation</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">pos</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">,</span>
+</span><span class='line'>                                       <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">infowindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">InfoWindow</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">map</span><span class="o">:</span> <span class="nx">map</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">position</span><span class="o">:</span> <span class="nx">pos</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Location found using HTML5.&#39;</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">map</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">(</span><span class="nx">pos</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">handleNoGeolocation</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Browser doesn&#39;t support Geolocation</span>
+</span><span class='line'>    <span class="nx">handleNoGeolocation</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">handleNoGeolocation</span><span class="p">(</span><span class="nx">errorFlag</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">errorFlag</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;Error: The Geolocation service failed.&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;Error: Your browser doesn\&#39;t support geolocation.&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">map</span><span class="o">:</span> <span class="nx">map</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">position</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">105</span><span class="p">),</span>
+</span><span class='line'>    <span class="nx">content</span><span class="o">:</span> <span class="nx">content</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">infowindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">InfoWindow</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">map</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">position</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addDomListener</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="nx">initialize</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;map-canvas&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>First, it should be noted that it would be much better practice to encapsulate all of this javascript in its own file, let&rsquo;s call it map.js, and reference it in the html file as follows: <code>&lt;script type="text/javascript" src="map.js"&gt;&lt;/script&gt;</code> (even better would be if the map.js were in a javascripts directory as well).</p>
+
+<p>Because of line 27, the element with the id, &lsquo;map-canvas&rsquo;, is going to contain the Google Map. Line 31 really just gives the conditional that the browser supports HTML5, in which case, geolocation should be possible. If it doesn&rsquo;t it will default to setting the map to center on Siberia, as indicated in lines 59-66.</p>
+
+<p>The meat of this code base is really in lines 32-34, in which the actual geolocation happens. The navigator.geolocation.getCurrentPosition method gets the geolocated coordinates, and the position variable (which contains data from the geolocation) is passed into an anonymous function. In line 33, a LatLng object is created from the position variable, so the rest of the Google Maps API can use the data, such as in line 42. The LatLng object is passed into the setCenter method to center the map on the geolocated coordinates.</p>
+
+<p>While in retrospect, this code base really wasn&rsquo;t that complex, it certainly intimidated me at first, so I hope my breaking down the important parts of it helped.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Installing Pindah]]></title>
