@@ -6,7 +6,7 @@ comments: true
 categories: "Flatiron&nbsp;School"
 ---
 As test driven development becomes increasingly popular, the desire to test every facet of a piece of a code arises. My group found ourselves in this situation while trying to scrape from Twitter with a Ruby Gem called Nokogiri. However, when we ran our rspec test suite on our code (testing it with one of our twitters), we got this failure:
-
+<!-- more -->
 ```bash
 expected: "New blog post about using abstraction and hashes to sort a music collection http://callahanchris.github.io/blog/2014/06/09/abstraction-and-music-library-sorting/ ... @aviflombaum"
 got: "New blog post about using abstraction and hashes to sort a music collection http://callahanchris.github.io/blog/2014/06/09/abstraction-and-music-library-sorting/ ... @aviflombaum"
