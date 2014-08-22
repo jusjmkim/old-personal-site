@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Kim">
 
   
-  <meta name="description" content="According to Google, &ldquo;Geolocation refers to the identification of the geographic location of a user or computing device via a variety of data &hellip;">
+  <meta name="description" content="In this blog post, I am going to talk about how I configured Node JS (and Express) to use the node module, Monk, to access MongoDB with on Heroku. It &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -62,6 +62,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku/">Deploying a Node JS App With MongoDB on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-22T09:21:42-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In this blog post, I am going to talk about how I configured Node JS (and Express) to use the node module, Monk, to access MongoDB with on Heroku. It strikes me, at least, as fairly odd that there is very little literature out there (at the time of this writing), so I just wanted to share my implementation of it. To note, I will only be providing the code relevant to this topic.</p>
+
+<p>First, it is important to define our cloud-based database (in this case MongoLab), and we will store it in the variable mongoUri here, as shown below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mongoUri</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGOLAB_URI</span> <span class="o">||</span>
+</span><span class='line'>    <span class="s1">&#39;mongodb://localhost/databaseName&#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>

@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Deploying a Node JS app with MongoDB on Heroku - As I Learn Web Dev</title>
+  <meta name="author" content="Justin Kim">
+
+  
+  <meta name="description" content="In this blog post, I am going to talk about how I configured Node JS (and Express) to use the node module, Monk, to access MongoDB with on Heroku. It &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jusjmkim.github.io/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku">
+  <link href="/favicon.ico" rel="icon">
+  
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="As I Learn Web Dev" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   class="no-sidebar"  >
+  <header role="banner"><hgroup>
+  <h1>As I Learn Web Dev</h1>
+  
+    <h2><a href="/">jusjmkim</a></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jusjmkim.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Deploying a Node JS App With MongoDB on Heroku</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-22T09:21:42-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In this blog post, I am going to talk about how I configured Node JS (and Express) to use the node module, Monk, to access MongoDB with on Heroku. It strikes me, at least, as fairly odd that there is very little literature out there (at the time of this writing), so I just wanted to share my implementation of it. To note, I will only be providing the code relevant to this topic.</p>
+
+<p>First, it is important to define our cloud-based database (in this case MongoLab), and we will store it in the variable mongoUri here, as shown below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mongoUri</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGOLAB_URI</span> <span class="o">||</span>
+</span><span class='line'>    <span class="s1">&#39;mongodb://localhost/databaseName&#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<p>While running locally, MongoLab would not be defined, so it would default to the localhost, and for it to be valid, you must create and run that database locally through the Mongo Console. To define Mongolab on Heroku, you have to run the following on your terminal.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>heroku addons:add mongolab
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, we have to configure Monk, our API layer, on top of Mongo (this helps us connect to Mongo):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">monk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;monk&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">,</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">monk</span><span class="p">(</span><span class="nx">mongoUri</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">,</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;collection&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At this point, Mongo should be sufficiently set up. Now, to show you how to access it, I have included two examples.</p>
+
+<p>To insert a new entry:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">collection</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="o">:</span> <span class="nx">value</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To query the database for all entries:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">collection</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">queryResult</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">client</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="nx">queryResult</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And of course, it is important to reference the Mongo documentation: <a href="http://docs.mongodb.org/manual/">http://docs.mongodb.org/manual/</a>
+And Heroku&rsquo;s getting started with Node.js: <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction">https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction</a>
+And here are free courses on Mongo: <a href="https://university.mongodb.com/">https://university.mongodb.com/</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn"><a href="/about" title="About the author (Justin Kim)" rel="author">Justin Kim</a></span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-22T09:21:42-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jusjmkim.github.io/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku/" data-via="" data-counturl="http://jusjmkim.github.io/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/28/geolocation-with-the-google-maps-api/" title="Previous Post: Geolocation with the Google Maps API">&laquo; Geolocation with the Google Maps API</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Justin Kim -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'jusjmkimgithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jusjmkim.github.io/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku/';
+        var disqus_url = 'http://jusjmkim.github.io/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[As I Learn Web Dev]]></title>
   <link href="http://jusjmkim.github.io/atom.xml" rel="self"/>
   <link href="http://jusjmkim.github.io/"/>
-  <updated>2014-07-29T00:22:24-04:00</updated>
+  <updated>2014-08-22T09:23:16-04:00</updated>
   <id>http://jusjmkim.github.io/</id>
   <author>
     <name><![CDATA[Justin Kim]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Deploying a Node JS app with MongoDB on Heroku]]></title>
+    <link href="http://jusjmkim.github.io/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku/"/>
+    <updated>2014-08-22T09:21:42-04:00</updated>
+    <id>http://jusjmkim.github.io/blog/2014/08/22/deploying-a-node-js-app-with-mongodb-on-heroku</id>
+    <content type="html"><![CDATA[<p>In this blog post, I am going to talk about how I configured Node JS (and Express) to use the node module, Monk, to access MongoDB with on Heroku. It strikes me, at least, as fairly odd that there is very little literature out there (at the time of this writing), so I just wanted to share my implementation of it. To note, I will only be providing the code relevant to this topic.</p>
+
+<p>First, it is important to define our cloud-based database (in this case MongoLab), and we will store it in the variable mongoUri here, as shown below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mongoUri</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGOLAB_URI</span> <span class="o">||</span>
+</span><span class='line'>    <span class="s1">&#39;mongodb://localhost/databaseName&#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<p>While running locally, MongoLab would not be defined, so it would default to the localhost, and for it to be valid, you must create and run that database locally through the Mongo Console. To define Mongolab on Heroku, you have to run the following on your terminal.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>heroku addons:add mongolab
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, we have to configure Monk, our API layer, on top of Mongo (this helps us connect to Mongo):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">monk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;monk&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">,</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">monk</span><span class="p">(</span><span class="nx">mongoUri</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">,</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;collection&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At this point, Mongo should be sufficiently set up. Now, to show you how to access it, I have included two examples.</p>
+
+<p>To insert a new entry:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">collection</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="o">:</span> <span class="nx">value</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To query the database for all entries:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">collection</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">queryResult</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">client</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="nx">queryResult</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And of course, it is important to reference the Mongo documentation: <a href="http://docs.mongodb.org/manual/">http://docs.mongodb.org/manual/</a>
+And Heroku&rsquo;s getting started with Node.js: <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction">https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction</a>
+And here are free courses on Mongo: <a href="https://university.mongodb.com/">https://university.mongodb.com/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Geolocation with the Google Maps API]]></title>
